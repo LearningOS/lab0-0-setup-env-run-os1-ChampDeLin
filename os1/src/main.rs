@@ -10,6 +10,7 @@ mod lang_items;
 mod logging;
 mod sbi;
 
+
 core::arch::global_asm!(include_str!("entry.asm"));
 
 fn clear_bss() {
@@ -19,6 +20,7 @@ fn clear_bss() {
     }
     (sbss as usize..ebss as usize).for_each(|a| unsafe { (a as *mut u8).write_volatile(0) });
 }
+
 
 #[no_mangle]
 pub fn rust_main() -> ! {
